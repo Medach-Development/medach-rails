@@ -17,6 +17,22 @@ class SmallCoverImageUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
+  process :optimize
+
+  def optimize
+    manipulate! do |img|
+      return img unless img.mime_type.match /image\/jpeg/
+      img.combine_options do |c|
+        c.strip
+        c.quality '80'
+        c.depth '8'
+        c.interlace 'plane'
+      end
+      img
+    end
+  end
+
+
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url(*args)
   #   # For Rails 3.1+ asset pipeline compatibility:

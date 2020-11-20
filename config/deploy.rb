@@ -88,6 +88,13 @@ task :logs do
   command "tail -f #{fetch(:deploy_to)}/current/log/production.log"
 end
 
+task :restart do
+  in_path(fetch(:current_path)) do
+    comment 'Restarting passenger'
+    command %(touch tmp/restart.txt)
+  end
+end
+
 # For help in making your deploy script, see the Mina documentation:
 #
 #  - https://github.com/mina-deploy/mina/tree/master/docs
