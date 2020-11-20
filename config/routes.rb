@@ -57,6 +57,7 @@ Rails.application.routes.draw do
       end
       resources :blogs, only: :index
     end
+    resources :careers, only: [:index, :show, :create]
     resources :vacancies, only: :show do
       collection do
         get :index
