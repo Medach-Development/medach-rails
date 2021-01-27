@@ -119,6 +119,12 @@ ru:
         few: Отклика
         many: Отклики
         other: Отклики
+      banner:
+        one: Баннер
+        few: Баннеры
+        many: Баннеры
+        other: Баннеры
+
   formtastic:
     :yes: "Да"
     :no: "Нет"
