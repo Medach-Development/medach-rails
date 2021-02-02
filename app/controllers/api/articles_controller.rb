@@ -20,6 +20,7 @@ module Api
         )
       else
         @article = type_class.find(params[:id])
+
         impressionist(@article)
         render json: @article, serializer: serializer, key_transform: :camel_lower
       end

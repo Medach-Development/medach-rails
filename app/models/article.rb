@@ -53,6 +53,17 @@ class Article < ApplicationRecord
     self.tag_list.join(', ')
   end
 
+  def tagged_banners
+    positions = Banner.positions.keys
+    filtered_banners = positions.flat_map do |p|
+      banners_by_position = Banner.where(position: p)
+      banner = banners_by_position.tagged_with(self.tag_string, :any => true).min_by(&:reviewed)
+      banner.present? ? banner : banners_by_position.tagged_with("default", :match_all => true).min_by(&:reviewed)
+    end
+
+    filtered_banners.compact
+  end
+
   private
 
   def self.filter(filtering_params)

@@ -1,5 +1,6 @@
 class Banner < ApplicationRecord
 	# belongs_to :article
+  validates :tag_string, presence: true
 	
 	enum positions: {
 		top: "top",
@@ -16,4 +17,12 @@ class Banner < ApplicationRecord
   acts_as_ordered_taggable
 
 	mount_uploader :image, BannerUploader
+
+  def tag_string=(value)
+    self.tag_list = value
+  end
+
+  def tag_string
+    self.tag_list.join(', ')
+  end
 end

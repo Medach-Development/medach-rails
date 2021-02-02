@@ -12,11 +12,16 @@ class SingleArticleSerializer < BaseArticleSerializer
     :short_description,
     :origin,
     :translate,
-    :tags
+    :tags,
+    :tagged_banners
   )
 
   def id
     object.id.to_s
+  end
+
+  def tagged_banners
+    object.tagged_banners
   end
 
 end

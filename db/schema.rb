@@ -84,26 +84,6 @@ ActiveRecord::Schema.define(version: 20210127184642) do
     t.boolean "visible", default: true
   end
 
-  create_table "careers", force: :cascade do |t|
-    t.boolean "is_approved"
-    t.string "full_name"
-    t.string "preferred_position"
-    t.string "email"
-    t.string "social_network"
-    t.string "address"
-    t.string "competencies"
-    t.string "skills"
-    t.string "education"
-    t.string "attachments"
-    t.string "resume_link"
-    t.string "photo_link"
-    t.text "additional_info"
-    t.text "scientific_publications"
-    t.text "professional_experience"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "documents", force: :cascade do |t|
     t.string "url"
     t.datetime "created_at", null: false
