@@ -35,6 +35,22 @@ ru:
         external_url: Внешняя ссылка
         is_promoted: Продвигаемая
         is_approved: Одобрена
+      career:
+        is_approved: Подтверждена
+        full_name: ФИО
+        preferred_position: Желаемая позиция
+        email: Электронная почта
+        social_network: Социальная сеть
+        address: Адрес, станция метро и тд
+        competencies: Сильные стороны
+        skills: Навыки
+        education: Образование
+        attachments: Курсы, Сертификаты
+        resume_link: Резюме
+        photo_link: Ссылка Фото
+        additional_info: Доп. Инфо
+        scientific_publications: Научные Публикации
+        professional_experience: Проффесиональный опыт
       subscriber:
         email: email
         is_subscribed: Подписан
@@ -119,6 +135,11 @@ ru:
         few: Отклика
         many: Отклики
         other: Отклики
+      career:
+        one: Кандидат
+        few: Кандидата
+        many: Кандидаты
+        other: Кандидаты
   formtastic:
     :yes: "Да"
     :no: "Нет"
