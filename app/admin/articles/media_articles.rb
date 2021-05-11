@@ -13,6 +13,7 @@ ActiveAdmin.register MediaArticle do
     :tag_list,
     :tag_string,
     :publish_on,
+    :slider_image,
     :short_description,
     :origin,
     :translate,
