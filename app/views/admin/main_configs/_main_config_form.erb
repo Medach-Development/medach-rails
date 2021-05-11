@@ -49,7 +49,7 @@
         name: 'slider_articles',
         label: 'Слайдер',
         order_label: 'Порядок в слайдере',
-        collection: LongreadArticle.published
+        collection: (MediaArticle.published + LongreadArticle.published)
       })
     %>
   <% end %>

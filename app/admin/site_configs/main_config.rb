@@ -5,6 +5,7 @@ ActiveAdmin.register MainConfig do
     :main_news,
     :promoted_articles,
     :slider_articles,
+    :media_articles,
     :title,
     :active
   )
