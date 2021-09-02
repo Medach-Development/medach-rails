@@ -50,7 +50,7 @@ module Api
     end
 
     def all
-      @articles = Article.includes(:tags).published.sort_query(sort_params).filter(index_params.except(*META_PARAMS))
+      @articles = Article.includes(:tags).where.not(hidden: true).published.sort_query(sort_params).filter(index_params.except(*META_PARAMS))
       paginated = @articles.page(params[:page]).per(params[:per_page] || 20)
 
       render_paginated(paginated)
