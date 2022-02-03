@@ -28,12 +28,23 @@ class Article < ApplicationRecord
   scope :published, -> { where('publish_on < ?', Time.current) }
   scope :newest_first, -> { order(created_at: :desc) }
 
-  multisearchable against: [:title, :author, :short_description, :origin]
+  multisearchable against: [:title, :author, :short_description, :origin, :body]
+  # multisearchable against: [
+    # [:title, 'A'],
+    # [:author, 'B'],
+    # [:short_description, 'C'],
+    # [:origin, 'D'],
+    # [:body, 'D']
+  # ]
   pg_search_scope :search,
-    against: [:title, :author, :short_description, :origin],
+    against: [:title, :author, :short_description, :origin, :body],
     associated_against: { :tags => [:name] },
     using: {
-      tsearch: { dictionary: 'russian', prefix: true }
+      tsearch: { 
+        dictionary: 'russian',
+        tsvector_column: 'searchable',
+        prefix: true 
+      }
     }
 
   def delete_whitespace

@@ -10,10 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200418142037) do
+ActiveRecord::Schema.define(version: 20220126171040) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "btree_gin"
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -61,10 +62,12 @@ ActiveRecord::Schema.define(version: 20200418142037) do
     t.bigint "updater_id"
     t.string "slider_image"
     t.boolean "hidden", default: false
+    t.tsvector "searchable", default: -> { "((((setweight(to_tsvector('russian'::regconfig, (COALESCE(title, ''::character varying))::text), 'A'::\"char\") || setweight(to_tsvector('russian'::regconfig, (COALESCE(short_description, ''::character varying))::text), 'B'::\"char\")) || setweight(to_tsvector('russian'::regconfig, (COALESCE(author, ''::character varying))::text), 'C'::\"char\")) || setweight(to_tsvector('russian'::regconfig, (COALESCE(origin, ''::character varying))::text), 'D'::\"char\")) || setweight(to_tsvector('russian'::regconfig, COALESCE(body, ''::text)), 'D'::\"char\"))" }
     t.index ["origin"], name: "index_articles_on_origin"
     t.index ["partner_id"], name: "index_articles_on_partner_id"
     t.index ["publish_on"], name: "index_articles_on_publish_on"
     t.index ["search"], name: "index_articles_on_search"
+    t.index ["searchable"], name: "index_articles_on_searchable", using: :gin
     t.index ["short_description"], name: "index_articles_on_short_description"
     t.index ["translate"], name: "index_articles_on_translate"
     t.index ["updater_id"], name: "index_articles_on_updater_id"
