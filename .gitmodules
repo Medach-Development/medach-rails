@@ -1,3 +1,4 @@
+
 [submodule "medach_frontend"]
 	path = medach_frontend
-	url = git@github.com:Medach-Development/medach-frontend.git
+	url = https://github.com/Medach-Development/medach-frontend.git
