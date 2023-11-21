@@ -6,8 +6,8 @@
     ```
     $ git clone https://github.com/Medach-Development/medach-rails.git
     ```
-2. Install ruby v2.4.1, postgres v9.6+, yarn v1.0+
-3. Copy and edit database config 
+2. Install ruby v2.4.1, postgres v12+, yarn v1.0+
+3. Copy and edit database config
     ```
     $ cp config/database.sample.yml config/database.yml
     ```
@@ -22,13 +22,13 @@
       ```
     - [optional] restore from [dump](http://rgho.st/8qB5rLlHl)
       ```
-      $ psql -U myuser -h localhost medach_development < /path/to/dump.sql 
+      $ psql -U myuser -h localhost medach_development < /path/to/dump.sql
       ```
     - run migrations & seeds
       ```
       $ rails db:migrate db:seed
       ```
-    
+
 6. Build client side
     ```
     $ yarn
