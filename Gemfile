@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.4.1'
+ruby '2.5.3'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -15,7 +15,7 @@ gem "active_material", github: "vigetlabs/active_material"
 # Use sqlite3 as the database for Active Record
 gem 'pg', '~> 0.18.4'
 # Use Puma as the app server
-gem 'puma', '~> 3.7'
+gem 'puma', '~> 5.6'
 gem 'fog', '1.42.0'
 gem 'mina', '1.2.3'
 # Use SCSS for stylesheets
