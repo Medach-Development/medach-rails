@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 350
+  host: localhost
+  username: postgres
+  password: postgres
+  reaping_frequency: 0
+
+production:
+  <<: *default
+  database: medach_production
+
+development:
+  <<: *default
+  database: medach_development
+
+test:
+  <<: *default
+  database: medach_test
